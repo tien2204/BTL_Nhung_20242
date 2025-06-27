@@ -1,0 +1,6 @@
+../../TouchGFX/gui/include/gui/screen2_screen/Screen2Presenter.hpp:15:13:Screen2Presenter::~Screen2Presenter()	0	static
+C:/TouchGFXProjects/Galaga-Ver4/TouchGFX/gui/src/screen2_screen/Screen2Presenter.cpp:14:6:virtual void Screen2Presenter::activate()	0	static
+C:/TouchGFXProjects/Galaga-Ver4/TouchGFX/gui/src/screen2_screen/Screen2Presenter.cpp:19:6:virtual void Screen2Presenter::deactivate()	0	static
+../../TouchGFX/gui/include/gui/screen2_screen/Screen2Presenter.hpp:15:13:virtual Screen2Presenter::~Screen2Presenter()	8	static
+../../TouchGFX/gui/include/gui/screen2_screen/Screen2Presenter.hpp:15:13:virtual void* Screen2Presenter::_ZThn4_N16Screen2PresenterD1Ev()	0	static
+C:/TouchGFXProjects/Galaga-Ver4/TouchGFX/gui/src/screen2_screen/Screen2Presenter.cpp:4:1:Screen2Presenter::Screen2Presenter(Screen2View&)	8	static
