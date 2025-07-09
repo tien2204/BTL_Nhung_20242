@@ -18,8 +18,8 @@
             "Name": "textArea1",
             "X": 28,
             "Y": 134,
-            "Width": 87,
-            "Height": 27,
+            "Width": 115,
+            "Height": 22,
             "TextId": "__SingleUse_F85V",
             "TextRotation": "0",
             "Color": {
@@ -32,10 +32,10 @@
           {
             "Type": "TextArea",
             "Name": "screen1point",
-            "X": 136,
+            "X": 143,
             "Y": 134,
-            "Width": 48,
-            "Height": 27,
+            "Width": 63,
+            "Height": 26,
             "TextId": "__SingleUse_SMBJ",
             "TextRotation": "0",
             "Color": {
@@ -43,7 +43,6 @@
               "Green": 5,
               "Blue": 5
             },
-            "AutoSize": true,
             "Wildcard1": {
               "TextId": "__SingleUse_5G1B"
             }
@@ -81,6 +80,7 @@
           {
             "Type": "Image",
             "Name": "heart1",
+            "Y": 6,
             "Width": 18,
             "Height": 16,
             "RelativeFilename": "heart.png"
@@ -89,6 +89,7 @@
             "Type": "Image",
             "Name": "heart2",
             "X": 18,
+            "Y": 6,
             "Width": 18,
             "Height": 16,
             "RelativeFilename": "heart.png"
@@ -97,6 +98,7 @@
             "Type": "Image",
             "Name": "heart3",
             "X": 36,
+            "Y": 6,
             "Width": 18,
             "Height": 16,
             "RelativeFilename": "heart.png"
@@ -105,7 +107,7 @@
             "Type": "Image",
             "Name": "enemy",
             "X": 108,
-            "Y": 97,
+            "Y": 62,
             "Width": 24,
             "Height": 19,
             "RelativeFilename": "enemy.png"
@@ -114,7 +116,7 @@
             "Type": "Image",
             "Name": "missile",
             "X": 120,
-            "Y": 188,
+            "Y": 271,
             "Width": 9,
             "Height": 14,
             "RelativeFilename": "missile.png"
@@ -122,8 +124,8 @@
           {
             "Type": "Image",
             "Name": "spaceship",
-            "X": 108,
-            "Y": 216,
+            "X": 104,
+            "Y": 288,
             "Width": 32,
             "Height": 32,
             "RelativeFilename": "space_ship.png"
@@ -148,28 +150,10 @@
           },
           {
             "Type": "TextArea",
-            "Name": "point",
-            "X": 161,
-            "Width": 16,
-            "Height": 27,
-            "TextId": "__SingleUse_7WAI",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 240,
-              "Green": 5,
-              "Blue": 5
-            },
-            "AutoSize": true,
-            "Wildcard1": {
-              "TextId": "__SingleUse_P391"
-            }
-          },
-          {
-            "Type": "TextArea",
             "Name": "txtJoystickX",
-            "Y": 188,
-            "Width": 34,
-            "Height": 27,
+            "X": 181,
+            "Width": 59,
+            "Height": 15,
             "TextId": "__SingleUse_5W4V",
             "TextRotation": "0",
             "Color": {
@@ -177,9 +161,41 @@
               "Green": 16,
               "Blue": 16
             },
-            "AutoSize": true,
+            "Wildcard1": {}
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 56,
+            "Y": 3,
+            "Width": 64,
+            "Height": 19,
+            "TextId": "__SingleUse_K0IF",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 240,
+              "Green": 5,
+              "Blue": 5
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "point",
+            "X": 120,
+            "Y": 3,
+            "Width": 61,
+            "Height": 19,
+            "TextId": "SCORE_TEXT",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 240,
+              "Green": 5,
+              "Blue": 5
+            },
             "Wildcard1": {
-              "TextId": "__SingleUse_S2TW"
+              "UseBuffer": true,
+              "BufferSize": 10
             }
           }
         ],

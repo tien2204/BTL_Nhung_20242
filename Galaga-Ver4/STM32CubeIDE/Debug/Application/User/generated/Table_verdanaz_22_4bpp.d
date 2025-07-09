@@ -1,5 +1,5 @@
 Application/User/generated/Table_verdanaz_22_4bpp.o: \
- C:/TouchGFXProjects/Galaga-Ver4/TouchGFX/generated/fonts/src/Table_verdanaz_22_4bpp.cpp \
+ D:/workspaceSTM/Galaga-Ver4/TouchGFX/generated/fonts/src/Table_verdanaz_22_4bpp.cpp \
  ../../TouchGFX/generated/fonts/include/fonts/GeneratedFont.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/ConstFont.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Font.hpp \

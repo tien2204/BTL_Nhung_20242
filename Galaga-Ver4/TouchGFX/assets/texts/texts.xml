@@ -6,16 +6,13 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_S2TW" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">X; </Translation>
-      </Text>
-      <Text Id="__SingleUse_5W4V" Alignment="Left" TypographyId="Default">
+      <Text Id="SCORE_TEXT" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_P391" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">1</Translation>
+      <Text Id="__SingleUse_K0IF" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Score:</Translation>
       </Text>
-      <Text Id="__SingleUse_7WAI" Alignment="Left" TypographyId="Default">
+      <Text Id="__SingleUse_5W4V" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_5G1B" Alignment="Left" TypographyId="Default">
@@ -25,13 +22,13 @@
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_F85V" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Score: </Translation>
+        <Translation Language="GB">Highccore: </Translation>
       </Text>
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="Default" Font="verdanaz.ttf" Size="22" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Default" Font="verdanaz.ttf" Size="18" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="0123456789&amp;" />
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
-    <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="0123456789&amp;" />
   </Typographies>
 </TextDatabase>

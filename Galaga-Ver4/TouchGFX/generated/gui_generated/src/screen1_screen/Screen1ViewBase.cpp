@@ -23,11 +23,10 @@ Screen1ViewBase::Screen1ViewBase() :
     textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_F85V));
     add(textArea1);
 
-    screen1point.setXY(136, 134);
+    screen1point.setPosition(143, 134, 63, 26);
     screen1point.setColor(touchgfx::Color::getColorFromRGB(242, 5, 5));
     screen1point.setLinespacing(0);
     screen1point.setWildcard(touchgfx::TypedText(T___SINGLEUSE_5G1B).getText());
-    screen1point.resizeToCurrentText();
     screen1point.setTypedText(touchgfx::TypedText(T___SINGLEUSE_SMBJ));
     add(screen1point);
 

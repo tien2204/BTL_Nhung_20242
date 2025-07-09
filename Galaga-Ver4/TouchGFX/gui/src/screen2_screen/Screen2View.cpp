@@ -23,7 +23,7 @@ Screen2View::Screen2View()
     }
 
     for (int i = 0; i < MAX_ENEMIES; ++i) {
-        enemyImages[i].setBitmap(Bitmap(BITMAP_ENEMY_ID));  // bitmap bạn đã import
+        enemyImages[i].setBitmap(Bitmap(BITMAP_ENEMY_ID));  // bitmap báº¡n Ä‘Ã£ import
         enemyImages[i].setVisible(false);
         add(enemyImages[i]);
     }
@@ -31,15 +31,22 @@ Screen2View::Screen2View()
 
 void Screen2View::updateJoyX(uint16_t value)
 {
-	Unicode::snprintf(joyXBuffer, JOY_BUF_SIZE, "%4u,%4u", JoystickX, JoystickY);
-    txtJoystickX.invalidate();                 // vẽ lại
+	Unicode::snprintf(joyXBuffer, JOY_BUF_SIZE, "%u&%u", JoystickX, JoystickY);
+    txtJoystickX.invalidate();                 // váº½ láº¡i
+}
+
+void Screen2View::buzz(uint16_t duration_ms)
+{
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
+    HAL_Delay(duration_ms);
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
 }
 
 void Screen2View::setupScreen()
 {
 	Screen2ViewBase::setupScreen();
 
-	txtJoystickX.setWildcard(joyXBuffer);      // trỏ wildcard vào buffer
+	txtJoystickX.setWildcard(joyXBuffer);      // trá» wildcard vÃ o buffer
 	updateJoyX(JoystickX);
 
 //    localImageX = presenter->getImageX();
@@ -52,7 +59,7 @@ void Screen2View::setupScreen()
     	bulletImages[i].setVisible(false);
     }
 
-    // --- reset và bố trí 5x5 enemies ---
+    // --- reset vÃ  bá»‘ trÃ­ 5x5 enemies ---
     const int marginX = 10;
     const int marginY = 20;
     const int spacingX = (HAL::DISPLAY_WIDTH - 2*marginX) / ENEMY_COLS;
@@ -70,18 +77,24 @@ void Screen2View::setupScreen()
         }
     }
 
-    // khởi vị trí và trạng thái ship
+    // khá»Ÿi vá»‹ trÃ­ vÃ  tráº¡ng thÃ¡i ship
     spaceshipX = HAL::DISPLAY_WIDTH/2  - spaceship.getWidth()/2;
     spaceshipY = HAL::DISPLAY_HEIGHT - spaceship.getHeight() - 10;
     spaceship.moveTo(spaceshipX, spaceshipY);
 
-    // reset điểm–mạng
+    // reset Ä‘iá»ƒmâ€“máº¡ng
     tickCount = 0;
     lives = 3;
     scores = 0;
-    point.setWildcard(txtBuffer);   // thêm dòng này
-    updatePoint(0);
     updateHearts();
+                                   // Vẽ lại nội dung
+    updatePoint(scores);
+
+    enemy.setVisible(false);
+    enemy.invalidate();
+
+    missile.setVisible(false);
+    missile.invalidate();
 
 }
 
@@ -94,66 +107,72 @@ void Screen2View::tearDownScreen()
 void Screen2View::handleTickEvent() {
     tickCount++;
 
+    if (JoystickX != oldJoyX) {
+        updateJoyX(JoystickX);
+        oldJoyX = JoystickX;
+    }
 
-    if (JoystickX != oldJoyX)
-       {
-           updateJoyX(JoystickX);
-           oldJoyX = JoystickX;
-       }
-
-    int rawX = JoystickX;
-    int rawY = 4095 - JoystickY;
+    const int DEADZONE = 300;
+    const int SPEED = 3;
     const int SHIP_Y_MAX = HAL::DISPLAY_HEIGHT - spaceship.getHeight() - 10;
 
-    // 1) di chuyển ship
-    spaceshipX = mapClamped(rawX, HAL::DISPLAY_WIDTH  - spaceship.getWidth());
-    spaceshipY = mapClamped(rawY, SHIP_Y_MAX);
+    int dx = 0, dy = 0;
+
+    // Tính hướng di chuyển theo joystick
+    if (JoystickX < 2048 - DEADZONE) dx = -SPEED;
+    else if (JoystickX > 2048 + DEADZONE) dx = SPEED;
+
+    if (JoystickY < 2048 - DEADZONE) dy = -SPEED; // ngược trục: joystick xuống thì tàu lên
+    else if (JoystickY > 2048 + DEADZONE) dy = SPEED;
+
+    // Cập nhật vị trí tàu
+    spaceshipX = clamp(spaceshipX + dx, 0, HAL::DISPLAY_WIDTH - spaceship.getWidth());
+    spaceshipY = clamp(spaceshipY + dy, 0, SHIP_Y_MAX);
     spaceship.moveTo(spaceshipX, spaceshipY);
 
+    // Bắn đạn nếu có tín hiệu
     bool fireRequest = shootFlag;
     shootFlag = false;
 
-    // 2) bắn đạn nếu có tín hiệu
     if (fireRequest && fireCooldown == 0 && totalShotsFired < MAX_TOTAL_SHOTS) {
         for (int i = 0; i < MAX_ACTIVE_BULLETS; ++i) {
-            if (!bullets[i].active ) {
-//                bulletsActive[i]     = true;
-                bullets[i].active     = true;
+            if (!bullets[i].active) {
+                bullets[i].active = true;
                 totalShotsFired++;
-                bullets[i].x = spaceship.getX() + spaceship.getWidth()/2;
+                bullets[i].x = spaceship.getX() + spaceship.getWidth() / 2 - bulletImages[i].getWidth() / 2;
                 bullets[i].y = spaceship.getY();
                 bulletImages[i].moveTo(bullets[i].x, bullets[i].y);
                 bulletImages[i].setVisible(true);
+                buzz(10);
                 break;
             }
         }
         fireCooldown = FIRE_COOLDOWN_TICKS;
-
     }
     if (fireCooldown > 0) --fireCooldown;
 
-    // 3) cập nhật toàn bộ bullets
+    // Cập nhật đạn
     for (int i = 0; i < MAX_ACTIVE_BULLETS; ++i) {
         if (bullets[i].active) {
-        	bullets[i].y -= BULLET_SPEED;
-        	if (bullets[i].y < -bulletImages[i].getHeight())
-        	    {
-        	        bullets[i].active = false;
-        	        bulletImages[i].setVisible(false);
-        	        continue;
-        	    }
+            bullets[i].y -= BULLET_SPEED;
+            if (bullets[i].y < -bulletImages[i].getHeight()) {
+                bullets[i].active = false;
+                bulletImages[i].setVisible(false);
+                continue;
+            }
 
             bulletImages[i].moveTo(bullets[i].x, bullets[i].y);
 
-            // va chạm với mọi enemy
+            // Va chạm với enemy
             for (int j = 0; j < MAX_ENEMIES; ++j) {
                 if (enemies[j].alive && checkCollision(bulletImages[i], enemyImages[j])) {
                     bullets[i].active = false;
                     bulletImages[i].setVisible(false);
                     enemies[j].alive = false;
                     enemyImages[j].setVisible(false);
-
-                    scores += 10;          // cộng 10 điểm
+                    enemyImages[j].invalidate();
+//                    buzz(50);
+                    scores += 10;
                     updatePoint(scores);
                     break;
                 }
@@ -161,44 +180,40 @@ void Screen2View::handleTickEvent() {
         }
     }
 
-
-
-    // 4) (giữ nguyên phần va chạm ship–enemy, nhấp nháy, giảm mạng…)…
+    // Va chạm tàu – enemy
     for (int i = 0; i < MAX_ENEMIES; ++i) {
-            if (enemies[i].alive && !flickering && checkCollision(spaceship, enemyImages[i])) {
-            	lives--;
-            	enemyImages[i].setVisible(false);
-            	enemies[i].alive = false;
-            	updateHearts();          // cập nhật hình trái tim và xử lý reset nếu lives == 0
-                flickering = true;       // bật chế độ nhấp nháy
-            	flickerCount = 0;
-            	break;
-            }
+        if (enemies[i].alive && !flickering && checkCollision(spaceship, enemyImages[i])) {
+            lives--;
+            enemyImages[i].setVisible(false);
+            enemyImages[i].invalidate();
+            enemies[i].alive = false;
+            updateHearts();
+            buzz(250);
+            flickering = true;
+            flickerCount = 0;
+            break;
+        }
     }
 
-        // ✨ Nhấp nháy nếu bị va chạm
+    // Hiệu ứng nhấp nháy khi trúng đạn
     if (flickering) {
-      flickerCount++;
-      if ((flickerCount & 1) == 0) {
-        spaceship.setVisible(!spaceship.isVisible());
-      }
-      if (flickerCount >= 60) {
-        flickering = false;
-        spaceship.setVisible(true);
-      }
+        flickerCount++;
+        if ((flickerCount & 1) == 0) {
+            spaceship.setVisible(!spaceship.isVisible());
+        }
+        if (flickerCount >= 60) {
+            flickering = false;
+            spaceship.setVisible(true);
+        }
     }
-
-//    // 5) vẽ lại tất cả
-//    spaceship.invalidate();
-//    for (int i = 0; i < MAX_ACTIVE_BULLETS; ++i) bulletImages[i].invalidate();
-//    for (int j = 0; j < MAX_ENEMIES; ++j) enemyImages[j].invalidate();
 }
 
 
 void Screen2View::updatePoint(int newValue)
 {
     Unicode::snprintf(txtBuffer, POINT_SIZE, "%d", newValue);
-    point.invalidate();
+    point.setWildcard(txtBuffer);  // đảm bảo luôn liên kết đúng nội dung
+    point.invalidate();            // vẽ lại trên màn hình
 }
 
 void Screen2View::updateHearts()
@@ -269,7 +284,6 @@ bool Screen2View::checkCollision(const Image& img1, const Image& img2)
 
 void Screen2View::ExitFromScreen2()
 {
-    presenter->saveLastScore(scores);   // lưu điểm
-    // KHÔNG gọi nữa application().gotoScreen1… vì màn hình 1 đã đang ở đó rồi
+    presenter->saveLastScore(scores);
 }
 

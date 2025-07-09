@@ -11,6 +11,7 @@
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 
 class Screen2ViewBase : public touchgfx::View<Screen2Presenter>
 {
@@ -43,8 +44,15 @@ protected:
     touchgfx::Image missile;
     touchgfx::Image spaceship;
     touchgfx::ImageButtonStyle< touchgfx::ClickButtonTrigger >  home;
-    touchgfx::TextAreaWithOneWildcard point;
     touchgfx::TextAreaWithOneWildcard txtJoystickX;
+    touchgfx::TextArea textArea1;
+    touchgfx::TextAreaWithOneWildcard point;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t POINT_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar pointBuffer[POINT_SIZE];
 
 private:
 

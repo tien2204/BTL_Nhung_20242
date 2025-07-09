@@ -13,27 +13,27 @@ Screen2ViewBase::Screen2ViewBase() :
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    heart1.setXY(0, 0);
+    heart1.setXY(0, 6);
     heart1.setBitmap(touchgfx::Bitmap(BITMAP_HEART_ID));
     add(heart1);
 
-    heart2.setXY(18, 0);
+    heart2.setXY(18, 6);
     heart2.setBitmap(touchgfx::Bitmap(BITMAP_HEART_ID));
     add(heart2);
 
-    heart3.setXY(36, 0);
+    heart3.setXY(36, 6);
     heart3.setBitmap(touchgfx::Bitmap(BITMAP_HEART_ID));
     add(heart3);
 
-    enemy.setXY(108, 97);
+    enemy.setXY(108, 62);
     enemy.setBitmap(touchgfx::Bitmap(BITMAP_ENEMY_ID));
     add(enemy);
 
-    missile.setXY(120, 188);
+    missile.setXY(120, 271);
     missile.setBitmap(touchgfx::Bitmap(BITMAP_MISSILE_ID));
     add(missile);
 
-    spaceship.setXY(108, 216);
+    spaceship.setXY(104, 288);
     spaceship.setBitmap(touchgfx::Bitmap(BITMAP_SPACE_SHIP_ID));
     add(spaceship);
 
@@ -43,21 +43,25 @@ Screen2ViewBase::Screen2ViewBase() :
     home.setPosition(210, 285, 30, 35);
     add(home);
 
-    point.setXY(161, 0);
-    point.setColor(touchgfx::Color::getColorFromRGB(240, 5, 5));
-    point.setLinespacing(0);
-    point.setWildcard(touchgfx::TypedText(T___SINGLEUSE_P391).getText());
-    point.resizeToCurrentText();
-    point.setTypedText(touchgfx::TypedText(T___SINGLEUSE_7WAI));
-    add(point);
-
-    txtJoystickX.setXY(0, 188);
+    txtJoystickX.setPosition(181, 0, 59, 15);
     txtJoystickX.setColor(touchgfx::Color::getColorFromRGB(232, 16, 16));
     txtJoystickX.setLinespacing(0);
-    txtJoystickX.setWildcard(touchgfx::TypedText(T___SINGLEUSE_S2TW).getText());
-    txtJoystickX.resizeToCurrentText();
     txtJoystickX.setTypedText(touchgfx::TypedText(T___SINGLEUSE_5W4V));
     add(txtJoystickX);
+
+    textArea1.setXY(56, 3);
+    textArea1.setColor(touchgfx::Color::getColorFromRGB(240, 5, 5));
+    textArea1.setLinespacing(0);
+    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_K0IF));
+    add(textArea1);
+
+    point.setPosition(120, 3, 61, 19);
+    point.setColor(touchgfx::Color::getColorFromRGB(240, 5, 5));
+    point.setLinespacing(0);
+    pointBuffer[0] = 0;
+    point.setWildcard(pointBuffer);
+    point.setTypedText(touchgfx::TypedText(T_SCORE_TEXT));
+    add(point);
 }
 
 Screen2ViewBase::~Screen2ViewBase()

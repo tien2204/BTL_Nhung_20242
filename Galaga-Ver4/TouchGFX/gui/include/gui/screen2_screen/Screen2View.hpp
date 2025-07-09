@@ -14,7 +14,7 @@
 
 // từ 10 -> 1000 missile
 #define BULLET_SPEED    4
-#define FIRE_COOLDOWN_TICKS 10
+#define FIRE_COOLDOWN_TICKS 5
 
 struct Bullet {
     int x, y;
@@ -27,7 +27,7 @@ struct Enemy {
 };
 
 static const int MAX_ACTIVE_BULLETS = 50;
-static const int MAX_TOTAL_SHOTS   = 1000;
+static const int MAX_TOTAL_SHOTS   = 1000000000;
 
 
 class Screen2View : public Screen2ViewBase
@@ -45,14 +45,18 @@ public:
     virtual void resetGame();
     bool checkCollision(const touchgfx::Image& img1, const touchgfx::Image& img2);
     void updateJoyX(uint16_t value);
-
-    static inline int mapClamped(int v, int screenMax)
-        {
-    		if (v < 20) v = 0;
-    	    else if (v > 4075) v = 4095;
-    	    return (v * screenMax) / 4095;              // scale sang kích thước màn
-        }
-
+    void buzz(uint16_t duration_ms);
+//    static inline int mapClamped(int v, int screenMax)
+//        {
+//    		if (v < 20) v = 0;
+//    	    else if (v > 4075) v = 4095;
+//    	    return (v * screenMax) / 4095;              // scale sang kích thước màn
+//        }
+    static inline int clamp(int value, int minVal, int maxVal) {
+        if (value < minVal) return minVal;
+        if (value > maxVal) return maxVal;
+        return value;
+    }
 
 protected:
     uint16_t oldJoyX;
@@ -66,13 +70,11 @@ protected:
     Bullet   bullets[MAX_ACTIVE_BULLETS];
     Image    bulletImages[MAX_ACTIVE_BULLETS];
 //    bool     bulletsActive[MAX_ACTIVE_BULLETS];
-    int      totalShotsFired;
+    int totalShotsFired;
 
     // kích thước mang chứa chữ số điểm (tối đa 6 chữ số + terminate)
     static const int POINT_SIZE = 8;
     Unicode::UnicodeChar txtBuffer[POINT_SIZE];
-    // trùng với tên widget bạn kéo từ Designer
-    touchgfx::TextAreaWithOneWildcard point;
 
     Enemy enemies[MAX_ENEMIES];
     Image enemyImages[MAX_ENEMIES]; // Kéo từ Designer
@@ -84,6 +86,7 @@ protected:
     int flickerCount = 0;
     bool flickering = false;
     int lives = 3;
+    int scores = 0;
 
 };
 
