@@ -157,7 +157,7 @@ Xử lý va chạm giữa đạn và enemy, tăng điểm nếu trúng.
                     totalEnemiesDefeated++;
                     if (totalEnemiesDefeated >= 50 && !playerHasWon) {
                         playerHasWon = true;
-                        // Thông báo thắng (tùy bạn bổ sung giao diện)
+                        
                     }
                     break;
                 }
