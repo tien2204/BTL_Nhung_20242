@@ -81,21 +81,6 @@
           },
           {
             "Type": "TextArea",
-            "Name": "textArea3",
-            "X": 39,
-            "Y": 139,
-            "Width": 81,
-            "Height": 18,
-            "TextId": "__SingleUse_8SGP",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 240,
-              "Green": 5,
-              "Blue": 5
-            }
-          },
-          {
-            "Type": "TextArea",
             "Name": "textArea4",
             "Width": 48,
             "Height": 20,

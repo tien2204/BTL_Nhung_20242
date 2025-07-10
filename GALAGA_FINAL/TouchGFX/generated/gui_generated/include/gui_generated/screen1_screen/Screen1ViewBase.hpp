@@ -35,7 +35,6 @@ protected:
     touchgfx::Image image1;
     touchgfx::TextArea textArea1;
     touchgfx::TextArea textArea2;
-    touchgfx::TextArea textArea3;
     touchgfx::TextArea textArea4;
 
     /*

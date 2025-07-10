@@ -46,12 +46,6 @@ Screen1ViewBase::Screen1ViewBase() :
     textArea2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_255I));
     add(textArea2);
 
-    textArea3.setPosition(39, 139, 81, 18);
-    textArea3.setColor(touchgfx::Color::getColorFromRGB(240, 5, 5));
-    textArea3.setLinespacing(0);
-    textArea3.setTypedText(touchgfx::TypedText(T___SINGLEUSE_8SGP));
-    add(textArea3);
-
     textArea4.setXY(0, 0);
     textArea4.setColor(touchgfx::Color::getColorFromRGB(255, 245, 245));
     textArea4.setLinespacing(0);
