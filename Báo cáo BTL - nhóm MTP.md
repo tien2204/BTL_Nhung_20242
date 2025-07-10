@@ -32,7 +32,6 @@ Tên nhóm:MTP
 | PC3 (GPIO Input)     | Nút nhấn (SW)     |              |                       |
 | 3V                   | VCC               | VCC          | VCC                   |
 | GND                  | GND               | GND          | GND                   |
-| PD12 (GPIO Output)   |                   | Buzzer In    |                       |
 | Nội bộ               |                   |              | RNG tích hợp nội bộ    |
 
 
