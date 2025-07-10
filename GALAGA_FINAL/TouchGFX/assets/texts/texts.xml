@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="texts.xsd" Version="4.25.0">
+  <Languages>
+    <Language Id="GB" />
+  </Languages>
+  <Texts>
+    <TextGroup Id="Group1" />
+    <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_W0GI" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">MTP</Translation>
+      </Text>
+      <Text Id="__SingleUse_8SGP" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Highscore:</Translation>
+      </Text>
+      <Text Id="__SingleUse_255I" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">Nhấn nút joystick để bắn&#10;(giữ để bắn liên tục)</Translation>
+      </Text>
+      <Text Id="__SingleUse_OV4J" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">Dùng joystick để di chuyển&#10;phi thuyền </Translation>
+      </Text>
+      <Text Id="SCORE_TEXT" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_K0IF" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Score:</Translation>
+      </Text>
+      <Text Id="__SingleUse_5W4V" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+    </TextGroup>
+  </Texts>
+  <Typographies>
+    <Typography Id="Default" Font="verdanaz.ttf" Size="13" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="0123456789&amp;" />
+    <Typography Id="Large" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="0123456789&amp;" />
+    <Typography Id="Small" Font="verdanaz.ttf" Size="11" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="0123456789&amp;" />
+    <Typography Id="Typography_00" Font="verdanaz.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+  </Typographies>
+</TextDatabase>

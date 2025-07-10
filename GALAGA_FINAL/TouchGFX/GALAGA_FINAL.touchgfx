@@ -1,0 +1,342 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Name": "Screen1",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 240,
+            "Height": 320
+          },
+          {
+            "Type": "TextArea",
+            "Name": "point",
+            "X": 120,
+            "Y": 139,
+            "Width": 81,
+            "Height": 18,
+            "TextId": "SCORE_TEXT",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 240,
+              "Green": 5,
+              "Blue": 5
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "Button",
+            "Name": "button1",
+            "X": 20,
+            "Y": 237,
+            "Width": 200,
+            "Height": 83,
+            "Pressed": "Start-Button-Vector.png",
+            "Released": "Start-Button-Vector.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "X": 20,
+            "Y": 46,
+            "Width": 200,
+            "Height": 88,
+            "RelativeFilename": "galaga-main.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 8,
+            "Y": 181,
+            "Width": 224,
+            "Height": 30,
+            "TextId": "__SingleUse_OV4J",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 245,
+              "Blue": 245
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea2",
+            "X": 43,
+            "Y": 211,
+            "Width": 155,
+            "Height": 26,
+            "TextId": "__SingleUse_255I",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 250,
+              "Green": 245,
+              "Blue": 245
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea3",
+            "X": 39,
+            "Y": 139,
+            "Width": 81,
+            "Height": 18,
+            "TextId": "__SingleUse_8SGP",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 240,
+              "Green": 5,
+              "Blue": 5
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea4",
+            "Width": 48,
+            "Height": 20,
+            "TextId": "__SingleUse_W0GI",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 245,
+              "Blue": 245
+            },
+            "AutoSize": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionCover",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "Screen2"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Screen2",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "heart1",
+            "Y": 6,
+            "Width": 18,
+            "Height": 16,
+            "RelativeFilename": "heart.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "heart2",
+            "X": 18,
+            "Y": 6,
+            "Width": 18,
+            "Height": 16,
+            "RelativeFilename": "heart.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "heart3",
+            "X": 36,
+            "Y": 6,
+            "Width": 18,
+            "Height": 16,
+            "RelativeFilename": "heart.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "enemy",
+            "X": 108,
+            "Y": 62,
+            "Width": 24,
+            "Height": 19,
+            "RelativeFilename": "enemy.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "missile",
+            "X": 116,
+            "Y": 271,
+            "Width": 9,
+            "Height": 14,
+            "RelativeFilename": "missile.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "spaceship",
+            "X": 104,
+            "Y": 288,
+            "Width": 32,
+            "Height": 32,
+            "RelativeFilename": "space_ship.png"
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "home",
+            "X": 210,
+            "Y": 285,
+            "Width": 30,
+            "Height": 35,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "Blue_Icons_Home_32.png",
+                "ImagePressed": "Blue_Icons_Home_32.png"
+              }
+            ]
+          },
+          {
+            "Type": "TextArea",
+            "Name": "txtJoystickX",
+            "X": 169,
+            "Y": 2,
+            "Width": 71,
+            "Height": 17,
+            "TextId": "__SingleUse_5W4V",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 232,
+              "Green": 16,
+              "Blue": 16
+            },
+            "Wildcard1": {}
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 56,
+            "Y": 3,
+            "Width": 46,
+            "Height": 15,
+            "TextId": "__SingleUse_K0IF",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 240,
+              "Green": 5,
+              "Blue": 5
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "point",
+            "X": 108,
+            "Width": 61,
+            "Height": 19,
+            "TextId": "SCORE_TEXT",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 240,
+              "Green": 5,
+              "Blue": 5
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "home"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "Screen1"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "Interaction1"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "ExitFromScreen2"
+            }
+          }
+        ]
+      }
+    ],
+    "CustomContainerDefinitions": [],
+    "Name": "GALAGA_FINAL",
+    "Resolution": {
+      "Width": 240,
+      "Height": 320
+    },
+    "SelectedColorDepth": 16,
+    "StartupScreenName": "Screen1",
+    "SelectedStartupLanguage": "GB",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "UIPath": ".",
+    "AvailableColorDepths": [
+      16
+    ],
+    "AvailableLCDs": {
+      "16": "LCD16bpp"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [
+      {
+        "Width": 240,
+        "Height": 320
+      }
+    ],
+    "PhysicalButtons": [],
+    "FrameworkFeatures": {
+      "LCD16bpp": {
+        "Id": "LCD16bpp",
+        "IsEnabled": true
+      }
+    },
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "PostGenerateTargetCommand": "touchgfx update_project",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "CompileTargetCommandOverride": "make -f ../gcc/Makefile -j8",
+    "FlashTargetCommandOverride": "make -f ../gcc/Makefile flash",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Portrait",
+    "Family": "STM32F4",
+    "SubFamily": "STM32F429/439",
+    "Toolchain": "STM32CubeIDE",
+    "Platform": "m4",
+    "ProjectFile": "../STM32F429I_DISCO_REV_D01.ioc",
+    "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
+    "OptionalComponents": [],
+    "AdditionalFeatures": [
+      "CWRVector",
+      "VectorFonts"
+    ]
+  },
+  "Version": "4.25.0",
+  "CreatedBy": "4.25.0"
+}
