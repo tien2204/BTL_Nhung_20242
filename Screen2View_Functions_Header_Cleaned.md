@@ -23,8 +23,8 @@ Tên nhóm:MTP
 - Phần mềm sử dụng:
  - TouchGFX 4.25
  - STM32CubeIDE 1.17.0
- - FreeRtos
-**SƠ ĐỒ SCHEMATIC**
+ - FreeRtos **SƠ ĐỒ SCHEMATIC**
+
 | STM32F429            | Joystick          | Buzzer       | RNG                   |
 |----------------------|-------------------|--------------|-----------------------|
 | PA0 (ADC1_IN0)       | Trục X            |              |                       |
@@ -101,11 +101,6 @@ Di chuyển tàu trong vùng giới hạn màn hình.
 
 ```cpp
     moveEnemiesTowardSpaceship();  // Di chuyển các enemy biết đuổi theo tàu
-```
-
----
-
-```cpp
     bool fireRequest = shootFlag;
     shootFlag = false;
 ```
@@ -130,7 +125,7 @@ Nếu có nhấn nút bắn thì xử lý tại đây, rồi reset cờ bắn.
     }
     if (fireCooldown > 0) --fireCooldown;
 ```
----
+
 ```cpp
     for (int i = 0; i < MAX_ACTIVE_BULLETS; ++i) {
         if (bullets[i].active) {
@@ -146,11 +141,6 @@ Xử lý di chuyển và loại bỏ đạn vượt ra ngoài màn hình.
 
 ```cpp
             bulletImages[i].moveTo(bullets[i].x, bullets[i].y);
-```
-
----
-
-```cpp
             for (int j = 0; j < MAX_ENEMIES; ++j) {
                 if (enemies[j].alive && checkCollision(bulletImages[i], enemyImages[j])) {
                     bullets[i].active = false;
